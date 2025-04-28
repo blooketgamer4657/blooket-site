@@ -1,37 +1,25 @@
-import tkinter as tk
-from tkinter import messagebox
 import webbrowser
+import time
+import sys
 
-# --- Configuration ---
-CORRECT_PASSWORD = "cocomelon"
+def slow_print(text, delay=0.2):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(delay)
+    print() 
 
-# --- Functions ---
-def check_password():
-    entered = password_entry.get()
-    if entered == CORRECT_PASSWORD:
-        open_button.pack(pady=10)
-        messagebox.showinfo("Access Granted", "Password is correct!")
+url = 'https://githubman6996.github.io/05konz-blooket-site/'
+
+while True:
+    user = input("Enter the passkey to hack Blooket: ")
+
+    if "coco" in user.lower():
+        slow_print("Access granted! open the bookmark bar and when you get there drag one of the buttons to the bookmark bar and click the bookmark when in dashboard, you will be gone to the website in 10 seconds", delay=0.1)
+        time.sleep(8)
+        webbrowser.open_new_tab(url)
+        break
     else:
-        messagebox.showerror("Access Denied", "Incorrect password.")
+        slow_print("Incorrect passkey.", delay=0.1)
 
-def open_google():
-    webbrowser.open("https://githubman6996.github.io/05konz-blooket-site/")
 
-# --- GUI Setup ---
-root = tk.Tk()
-root.title("Secure Button Access")
-root.geometry("300x200")
-
-label = tk.Label(root, text="Enter Password:")
-label.pack(pady=10)
-
-password_entry = tk.Entry(root, show="*")
-password_entry.pack()
-
-submit_button = tk.Button(root, text="Submit", command=check_password)
-submit_button.pack(pady=5)
-
-open_button = tk.Button(root, text="Go to Google", command=open_google)
-# Don't pack it yet — only after correct password!
-
-root.mainloop()
